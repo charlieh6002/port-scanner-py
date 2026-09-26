@@ -18,13 +18,25 @@ target = input("")
 targetIP = socket.gethostbyname(target)
 portRange = (0, 65535)
 
+#determine range
+portRange = [0, 100] #default
+print("< please specify port range >")
+print(" (default 0-100)")
+print()
+portRange[0] = int(input("start  "))
+portRange[1] = int(input("end    "))
+print()
+
+
 #---SCAN-PHASE---
 
 startTime = datetime.now()
 print()
-print("starting scan (time: {})".format(startTime))
+print("< starting scan >")
+print(" (time: {})".format(startTime))
+print(" (range: {0} - {1} inclusive)".format(portRange[0], portRange[1]))
+
 print()
-portRange = 0, 100 #default for testing
 
 try:
     for port in range(portRange[0], portRange[1] + 1): #+1 as upper limit is exclusive
