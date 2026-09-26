@@ -5,15 +5,25 @@ from datetime import datetime #tracks execution time
 
 #---PRE-SCAN---
 
+print("_" * 150)
+print()
+print("OPEN PORT SCANNER")
+print("created by CH")
+print("_" * 150)
+print()
+
 #get target
-target = input("enter target host name: ")
+print("< enter target host name > ")
+target = input("")
 targetIP = socket.gethostbyname(target)
 portRange = (0, 65535)
 
 #---SCAN-PHASE---
 
 startTime = datetime.now()
+print()
 print("starting scan (time: {})".format(startTime))
+print()
 portRange = 0, 100 #default for testing
 
 try:
@@ -21,7 +31,7 @@ try:
         currentSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #temporary file for storing socket information
         result = currentSocket.connect_ex((targetIP, port))
         if result == 0:
-            print("port {}  open".format(port))
+            print("port {}  OPEN".format(port))
         currentSocket.close()            
 except KeyboardInterrupt:
     print("closing")
@@ -39,6 +49,7 @@ endTime = datetime.now()
 
 #---POST---
 
+print()
 time = endTime - startTime
 print("timet taken, {}s".format(time))
 sys.exit()
